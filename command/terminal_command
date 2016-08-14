@@ -1,0 +1,48 @@
+
+##################################################################
+##终端命令 
+##################################################################
+##################################################################
+## 查看端口, pid, 进程 
+##################################################################
+ps aux|grep programName && kill  查杀程序(强)
+netstat -antp 查看端口号
+lsof -i:80  查看80端口对应的pid及程序名
+
+##################################################################
+## systemctl 管理服务
+##################################################################
+systemctl status nginx.service
+
+[root@study ~]# systemctl [command] [unit]
+command 主要有：
+start     ：立刻啟動後面接的 unit
+stop      ：立刻關閉後面接的 unit
+restart   ：立刻關閉後啟動後面接的 unit，亦即執行 stop 再 start 的意思
+reload    ：不關閉後面接的 unit 的情況下，重新載入設定檔，讓設定生效
+enable    ：設定下次開機時，後面接的 unit 會被啟動
+disable   ：設定下次開機時，後面接的 unit 不會被啟動
+status    ：目前後面接的這個 unit 的狀態，會列出有沒有正在執行、開機預設執行否、登錄等資訊等！
+is-active ：目前有沒有正在運作中
+is-enable ：開機時有沒有預設要啟用這個 unit
+
+
+[root@study ~]# systemctl [command] [--type=TYPE] [--all]
+command:
+    list-units      ：依據 unit 列出目前有啟動的 unit。若加上 --all 才會列出沒啟動的。
+    list-unit-files ：依據 /usr/lib/systemd/system/ 內的檔案，將所有檔案列表說明。
+--type=TYPE：就是之前提到的 unit type，主要有 service, socket, target 等
+
+systemctl                 : 列出系統上面有啟動的 unit
+systemctl list-unit-files : 列出所有已經安裝的 unit 有哪些
+systemctl list-units --type=service --all  : 只剩下 *.service 的項目才會出現喔！
+systemctl list-units --type=service --all | grep cpu  : 查詢系統上是否有以 cpu 為名的服務
+
+##################################################################
+## 用sysv-rc-conf管理Ubuntu的开机启动项 
+##################################################################
+查看当前运行级别,执行命令：
+runlevel    : 查看当前运行级别（ runlevel 显示上次的运行级别和当前的运行级别，“N”表示没有上次的运行级别。）
+sudo apt-get install sysv-rc-conf   : 安装sysv-rc-conf
+sudo sysv-rc-conf   : 使用sysv-rc-conf
+

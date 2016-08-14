@@ -1,0 +1,13 @@
+##1.PHP
+Nginx(Apache) + MySQL + Php / XAMPP / EClipse PDT,ZendStudio,PhpStorm
+引入其它文件    require(依赖，没有则报错)   include(包含，不报错，waring)
+require_once 
+@ 可使 忽略waring
+mime type 
+
+get(地址栏的长度限制了提交内容的量) ,post(提交的内容不显示在地址栏里，安全)
+
+php.net 
+
+cookie(记录在浏览器端）， session(服务器)
+
