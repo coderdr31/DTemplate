@@ -72,8 +72,14 @@
 
                 var line = new THREE.Line( geometry, material, THREE.LinePieces );
                 scene.add(line);
+                window.addEventListener( 'resize', onWindowResize, false ); //窗口改变时，改变对应的位置
             }
 
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize( window.innerWidth, window.innerHeight );
+    }
             function threeStart() {
                 initThree();
                 initCamera();

@@ -1,0 +1,8 @@
+
+##################################################################
+## CTF PWN练习之执行shellcode
+##################################################################
+在实际场景中，我们通常使用Metasploit这个工具来定制各种功能的Shellcode，当然也可以去网上查找一些现有的Shellcode进行测试，
+通常在shell-storm以及exploit-db等网站上都能找到一些比较成熟和稳定的shellcode，网址为：
+http://shell-storm.org/shellcode/
+http://www.exploit-db.com/shellcode/

