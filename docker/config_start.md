@@ -1,4 +1,37 @@
 <head><meta charset="UTF-8"></head>
+# 安装、配置
+## 安装
+> sudo apt install docker.io
+
+## 不用输入 sudo
+```zsh
+sudo groupadd docker
+sudo gpasswd -a ${USER} docker  # 或者 sudo gpasswd -a coder352 docker
+sudo service docker restart  # log out and back in to take effect
+```
+
+## 加速
+[阿里云加速](https://cr.console.aliyun.com)
+进去以后有步骤, 不用重装
+
+# 常用命令
+## 流程
+```zsh
+docker help search  # docker 的命令都可以用 help
+docker search busybox  # 查找镜像
+docker pull busybox
+# docker pull ubuntu:16.04  # 带版本号,看hub.docker官网
+docker images  # 查看镜像信息
+docker run busybox /bin/echo hello world  # busy 无法进入命令行
+docker run -it busybox  # 进入命令行界面
+```
+
+```zsh
+docker ps      # 目前执行的
+docker ps -a   # 所有 run 执行过的都会在 ps -a 显示
+docker images  # 查看所有的images
+```
+# 详细版
 Docker 的思想是每个容器最好只开一个线程做一件事
 
 ## Docker
