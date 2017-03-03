@@ -1,17 +1,15 @@
+<head><meta charset="UTF-8"></head>
 
-##################################################################
-##终端命令
-##################################################################
-##################################################################
-## 查看端口, pid, 进程
-##################################################################
+# 终端命令
+## 系统管理
+### 查看端口, pid, 进程
+```
 ps aux|grep programName && kill  查杀程序(强)
     netstat -antp 查看端口号
     lsof -i:80  查看80端口对应的pid及程序名
-
-##################################################################
-## systemctl 管理服务
-##################################################################
+```
+### systemctl 管理服务
+    ```
     systemctl status nginx.service
 
     [root@study ~]# systemctl [command] [unit]
@@ -37,18 +35,17 @@ ps aux|grep programName && kill  查杀程序(强)
     systemctl list-unit-files : 列出所有已經安裝的 unit 有哪些
     systemctl list-units --type=service --all  : 只剩下 *.service 的項目才會出現喔！
     systemctl list-units --type=service --all | grep cpu  : 查詢系統上是否有以 cpu 為名的服務
-
-##################################################################
-## 用sysv-rc-conf管理Ubuntu的开机启动项
-##################################################################
+    ```
+### 用sysv-rc-conf管理Ubuntu的开机启动项
     查看当前运行级别,执行命令：
-    runlevel    : 查看当前运行级别（ runlevel 显示上次的运行级别和当前的运行级别，“N”表示没有上次的运行级别。）
-    sudo apt-get install sysv-rc-conf   : 安装sysv-rc-conf
-    sudo sysv-rc-conf   : 使用sysv-rc-conf
+    > runlevel    : 查看当前运行级别（ runlevel 显示上次的运行级别和当前的运行级别，“N”表示没有上次的运行级别。）
+    > sudo apt-get install sysv-rc-conf   : 安装sysv-rc-conf
+    > sudo sysv-rc-conf   : 使用sysv-rc-conf
+### 卸载软件
+1. dpkg --list //查看已安装的软件包列表
+2. sudo apt-get --purge <programname>
 
-##################################################################
 ## u盘分区的建立和删除、格式化
-##################################################################
 1.sudo fdisk -l后查看该磁盘的分区盘符，如：/dev/sdc1.
 2.sudo fdisk /dev/sdb 后会显示menu：
     输入m回车，显示menu；
@@ -61,21 +58,41 @@ ps aux|grep programName && kill  查杀程序(强)
 3.格式化
 mkfs.vfat /dev/sdc1
 mkfs.ext3 /dev/sdc1
+4.更改U盘名字，用e2label命令
+sudo e2label /dev/sdc cake
 
-##################################################################
 ## CTF
-##################################################################
 1. md5sum、sha1sum 计算文件的md5、sha1值。如 md5 1.txt
 
-##################################################################
 ## 图片、视频
-##################################################################
 convert  转换图片的格式：convert a.png a.jpg ;支持JPG, BMP, PCX, GIF, PNG, TIFF, XPM和XWD等类型
 
-##################################################################
-## 其它
-##################################################################
-    Linux Shell中，可以使用$()或者两个反引号（`）来包裹一条shell命令，并返回shell命令的执行结果。
-    比如执行export testenv2=`python -c "print 'A'*20"`命令后，再执行./env可以看到有一个名为testenv2的环境变量，其值为20个A。
+## 压缩、解压
+1. .zip
+解压：unzip FileName.zip
+压缩：zip FileName.zip DirName
 
+windows下的zip解压乱码解决方法：
+  sudo apt-get install unar
+  使用：假设需要解压的ZIP包是foo.zip
+  lsar foo.zip #列出所有文件
+
+  如果列出的文件名已经正确
+  unar foo.zip #解压所有文件
+
+  如果列出的文件名还不正确
+  lsar -e GB18030 foo.zip #指定使用GB18030编码列出所有文件
+  unar -e GB18030 foo.zip #指定使用GB18030解压所有文件
+  注：GB18030编码文件名的ZIP文件一般由简体中文版Windows产生，对于繁体中文版Windows产生的ZIP文件可以尝试BIG5-HKSCS编码，对其他语种的常见编码不再赘述。通用的原则是用lsar测试出正确的编码以后，用unar解压。
+2. .rar
+解压：rar x FileName.rar
+压缩：rar a FileName.rar DirName
+3. .tar.gz
+解压：tar -zxvf [-C 指定目录]
+
+
+## 其它
+1. Linux Shell中，可以使用$()或者两个反引号（`）来包裹一条shell命令，并返回shell命令的执行结果。
+   比如执行export testenv2=`python -c "print 'A'*20"`命令后，再执行./env可以看到有一个名为testenv2的环境变量，其值为20个A。
+2. xdg-open  //会选择合适的程序打开指定文件2. xdg-open  //会选择合适的程序打开指定文件
 
