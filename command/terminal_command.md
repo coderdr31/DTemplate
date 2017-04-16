@@ -44,6 +44,12 @@ ps aux|grep programName && kill  查杀程序(强)
 ### 卸载软件
 1. dpkg --list //查看已安装的软件包列表
 2. sudo apt-get --purge <programname>
+### 增删用户
+1. userdel -r -f user  删除用户(-r 删用户的家目录， -f强制删除)
+2. groupdel users    删除组users
+3. usermod   在添加之后若再对该用户添加另外附加组时，使用`usermod -G 附加组名 用户名`会覆盖该用户的之前的附加组。此时，可在usermod 命令中添加一个参数 -a 来实现 `usermod -a -G 附加组名 用户名`.
+4. chown -R intelmq.intelmq /opt/intelmq
+
 
 ## u盘分区的建立和删除、格式化
 1.sudo fdisk -l后查看该磁盘的分区盘符，如：/dev/sdc1.
@@ -89,6 +95,19 @@ windows下的zip解压乱码解决方法：
 压缩：rar a FileName.rar DirName
 3. .tar.gz
 解压：tar -zxvf [-C 指定目录]
+
+## 查看
+1. du 查看目录文件大小
+  du -ah test //test下所有的文件
+  du -sh *  //当前目录下文件(夹)
+2. top 查看进程占用资源情况
+  “x”（打开/关闭排序列的加亮效果）
+  ”shift + >”或`shift +  <  `可以向右或左改变排序列
+  M 根据驻留内存大小进行排序
+  P 根据CPU使用百分比大小进行排序
+  T 根据时间/累计时间进行排序
+  q 退出
+
 
 
 ## 其它
