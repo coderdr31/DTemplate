@@ -111,7 +111,7 @@ windows下的zip解压乱码解决方法：
 
 
 ## 其它
-1. Linux Shell中，可以使用$()或者两个反引号（`）来包裹一条shell命令，并返回shell命令的执行结果。
+1. Linux Shell中，可以使用`$()或者两个反引号来包裹一条shell命令`，并返回shell命令的执行结果。
    比如执行export testenv2=`python -c "print 'A'*20"`命令后，再执行./env可以看到有一个名为testenv2的环境变量，其值为20个A。
 2. xdg-open  //会选择合适的程序打开指定文件2. xdg-open  //会选择合适的程序打开指定文件
 
