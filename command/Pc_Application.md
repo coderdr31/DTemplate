@@ -3,6 +3,17 @@
 # ubuntu安装的应用
 ## git
 [廖雪峰git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743256916071d599b3aed534aaab22a0db6c4e07fd0000)
+### 配置查看用户名和地址
+初始化、修改用户名和地址
+```
+git config --global user.name "your name"
+git config --global user.email "your email"
+```
+查看
+```
+git config user.name
+git config user.email
+```
 ### 创建版本库
 ```
 git init //创建本地仓库
