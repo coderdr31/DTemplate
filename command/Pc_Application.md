@@ -80,6 +80,38 @@ stash功能，可以把当前工作现场“储藏”起来，等以后恢复现
 > git remote -v  列出所有远程仓库信息, 包括网址.
 > git remote set-url origin git@github.com:username/newrepo.git   修改远程仓库对应的网址.
 
+### gitignore规则
+不需要从头写.gitignore文件，GitHub已经为我们准备了各种配置文件，只需要组合一下就可以使用了。所有配置文件可以直接在线浏览：https://github.com/github/gitignore
+> 所有空行或#开头的行都会被忽略；
+> 可以使用标准的 glob 模式匹配；
+> 文件或目录前加 / 表示仓库根目录的对应文件；
+> 匹配模式最后跟反斜杠 / 说明要忽略的是目录；
+> 要特殊不忽略某个文件或目录，可以在模式前加上取反 ! 。
+> 其中 glob 模式是指 shell 所使用的简化了的正则表达式。
+>
+> 星号 * 匹配零个或多个任意字符；
+> [abc]匹配任何一个列在方括号中的字符（这个例子要么匹配一个 a，要么匹配一个 b，要么匹配一个 c）；- - 问号 ? 只匹配一个任意字符；
+> 如果在方括号中使用短划线分隔两个字符，表示所有在这两个字符范围内的都可以匹配（比如 [0-9] 表示匹配所有 0 到 9 的数字）。
+下面是一个 .gitignore 文件例子，注释上附录有说明：
+```
+*.a                    # 所有以 '.a' 为后缀的文件都屏蔽掉
+# Office 缓存文件
+~'$'*.docx
+~'$'*.ppt
+~'$'*.pptx
+~'$'*.xls
+
+tags                   # 仓库中所有名为 tags 的文件都屏蔽
+core.*                 # 仓库中所有以 'core.' 开头的文件都屏蔽
+
+tools/                # 屏蔽目录 tools
+log/*                  # 屏蔽目录 log 下的所有文件，但不屏蔽 log 目录本身
+
+/log.log               # 只屏蔽仓库根目录下的 log.log 文件，其他目录中的不屏蔽
+readme.md       # 屏蔽仓库中所有名为 readme.md 的文件
+!/readme.md     # 在上一条屏蔽规则的条件下，不屏蔽仓库根目录下的 readme.md 文件
+```
+
 ## apache2
 ### 认证(Authentication)
 [中文版apache手册](http://www.t086.com/code/apache2.2/howto/auth.html)
