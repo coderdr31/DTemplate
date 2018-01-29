@@ -1,7 +1,0 @@
-gdb test 
-(gdb) disas main
-(gdb) b *0x080483f8 //下断点
-(gdb) r  //执行，到断点处停止
-(gdb) i r $esp //查看esp寄存器的值
-(gdb) c  //让程序继续执行，会在断点处断下
-(gdb) r < input  //表示将input文件的数据当做输入数据传给test程序
